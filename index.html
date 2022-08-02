@@ -5,9 +5,50 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Librenta</title>
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-    
+    <p>Catalogo:</p>
+    <div class="catalogo">
+        <div id="titulo">
+            <p>Titulo</p>
+            <p>Las 48 Leyes Del Poder</p>
+            <p>Saga Completa Harry Potter</p>
+            <p>Cómo Hacer Que Te Pasen Cosas Buenas</p>
+            <p>El Club De Las 5 De La Mañana</p>
+            <p>De Comerciante a Empresario</p>
+        </div>
+        <div id="isbn">
+            <p>ISBN</p>
+            <p>9786075276915</p>
+            <p>9789878000473</p>
+            <p>9789508523150</p>
+            <p>9789502812441</p>
+            <p>9789874433428</p>
+        </div>
+        <div id="stock">
+            <p>Stock</p>
+            <p>100</p>
+            <p>50</p>
+            <p>75</p>
+            <p>36</p>
+            <p>20</p>
+        </div>
+    </div>
+    <div id="agregar">
+        <p>Agregar un libro al catalogo:</p>
+        <input type="text" id="input1" placeholder="Ingrese Titulo">
+        <input type="text" id="input2" placeholder="Ingrese ISBN">
+        <input type="text" id="input3" placeholder="Ingrese Stock">
+        <button id="boton">Cargar</button>
+    </div>
+    <div class="flex">
+        <p>Crear Orden de compra:</p>
+        <button id="cargar">Crear</button> 
+    </div>
+    <div id="compra">
+
+    </div>
     <script src="./script.js"></script>
 </body>
 </html>

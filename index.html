@@ -8,42 +8,32 @@
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-    <p>Catalogo:</p>
+    <p class="titulo">Catalogo:</p>
+    <div class="catalogoTitulo">
+        <p>Titulo</p>
+        <p>ISBN</p>
+        <p>Stock</p>
+    </div>
     <div class="catalogo">
-        <div id="titulo">
-            <p>Titulo</p>
-            <p>Las 48 Leyes Del Poder</p>
-            <p>Saga Completa Harry Potter</p>
-            <p>Cómo Hacer Que Te Pasen Cosas Buenas</p>
-            <p>El Club De Las 5 De La Mañana</p>
-            <p>De Comerciante a Empresario</p>
-        </div>
-        <div id="isbn">
-            <p>ISBN</p>
-            <p>9786075276915</p>
-            <p>9789878000473</p>
-            <p>9789508523150</p>
-            <p>9789502812441</p>
-            <p>9789874433428</p>
-        </div>
-        <div id="stock">
-            <p>Stock</p>
-            <p>100</p>
-            <p>50</p>
-            <p>75</p>
-            <p>36</p>
-            <p>20</p>
-        </div>
+        <div id="titulo"></div>
+        <div id="isbn"></div>
+        <div id="stock"></div>
+    </div>
+    <div class="flex">
+        <p class="texto">Cambiar stock de un titulo:</p>
+        <input type="text" id="buscar" placeholder="Ingrese Titulo">
+        <input type="text" id="nuevoStock" placeholder="Ingrese nuevo stock">
+        <button id="cambiar">Cambiar</button>
     </div>
     <div id="agregar">
-        <p>Agregar un libro al catalogo:</p>
+        <p class="texto">Agregar un libro al catalogo:</p>
         <input type="text" id="input1" placeholder="Ingrese Titulo">
         <input type="text" id="input2" placeholder="Ingrese ISBN">
         <input type="text" id="input3" placeholder="Ingrese Stock">
         <button id="boton">Cargar</button>
     </div>
     <div class="flex">
-        <p>Crear Orden de compra:</p>
+        <p class="texto">Crear Orden de compra:</p>
         <button id="cargar">Crear</button> 
     </div>
     <div id="compra">

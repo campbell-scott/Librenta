@@ -10,9 +10,42 @@ let libros = [
     {ISBN: 9789874433428, Titulo: "De Comerciante a Empresario", Stock: 20},
 ]
 
+//IMPRIMIR CATALOGO
 let titulo = document.getElementById('titulo')
 let isbn = document.getElementById('isbn')
 let stock = document.getElementById('stock')
+
+function actualizarCatalogo() {
+    titulo.innerHTML = ''
+    isbn.innerHTML = ''
+    stock.innerHTML = ''
+    for (let i = 0; i < libros.length; i++) {
+        let nombrePantalla = document.createElement('p')
+        nombrePantalla.innerHTML = libros[i].Titulo
+        titulo.append(nombrePantalla)
+        let codigoPantalla = document.createElement('p')
+        codigoPantalla.innerHTML = libros[i].ISBN
+        isbn.append(codigoPantalla)
+        let cantidadPantalla = document.createElement('p')
+        cantidadPantalla.innerHTML = libros[i].Stock
+        stock.append(cantidadPantalla)
+    }
+}
+actualizarCatalogo()
+
+//CAMBIAR STOCK
+let busqueda = document.getElementById('buscar')
+let nuevoStock = document.getElementById('nuevoStock')
+let cambiar = document.getElementById('cambiar')
+cambiar.addEventListener('click', cambiarStock)
+
+function cambiarStock() {
+    let buscarTitulo = libros.findIndex(elemento => elemento.Titulo == busqueda.value);
+    libros[buscarTitulo].Stock = nuevoStock.value
+    actualizarCatalogo()
+}
+
+//AGREGAR UN LIBRO AL CATALOGO
 let input1 = document.getElementById('input1')
 let input2 = document.getElementById('input2')
 let input3 = document.getElementById('input3')
@@ -20,36 +53,31 @@ let boton = document.getElementById('boton')
 boton.addEventListener('click', agregarLibro)
 
 function agregarLibro() {
-    let nombrePantalla = document.createElement('p')
-    nombrePantalla.innerHTML = input1.value
-    titulo.append(nombrePantalla)
-    let codigoPantalla = document.createElement('p')
-    codigoPantalla.innerHTML = input2.value
-    isbn.append(codigoPantalla)
-    let cantidadPantalla = document.createElement('p')
-    cantidadPantalla.innerHTML = input3.value
-    stock.append(cantidadPantalla)
     let Titulo = input1.value
     let ISBN = parseInt(input2.value)
     let Stock = parseInt(input3.value)
     libros.push({ISBN, Titulo, Stock})
-    console.log(libros)
+    actualizarCatalogo()
 }
 
+//CREAR ORDEN DE COMPRA
 let compra = document.getElementById('compra')
 let cargar = document.getElementById('cargar')
 cargar.addEventListener('click', dispararCompra)
 
 function dispararCompra() {
+    compra.innerHTML = ''
     for (let i = 0; i < libros.length; i++) {
         let ventas = parseInt(prompt("Ingrese las ventas de un mes de "+libros[i].Titulo))
     if ((ventas*1.5)<=(libros[i].Stock)) {
         let compraPantalla = document.createElement('p')
+        compraPantalla.className = "textoOrden"
         compraPantalla.innerHTML = "De el libro "+libros[i].Titulo+" tiene que pedir 0 ejemplares"
         compra.append(compraPantalla)
     }
     else {
         let compraPantalla = document.createElement('p')
+        compraPantalla.className = "textoOrden"
         compraPantalla.innerHTML = "De el libro "+libros[i].Titulo+" tiene que pedir "+Math.ceil(((ventas*1.5)-libros[i].Stock))+" ejemplares"
         compra.append(compraPantalla)
     }

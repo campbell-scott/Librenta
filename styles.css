@@ -1,27 +1,63 @@
-div.catalogo{
+body{
+    background-color: #9aacb5;
+}
+.titulo{
+    display: flex;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+.catalogoTitulo{
+    font-size: 1.4rem;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     width: 80%;
-    margin: 3% 10%;
-    background-color: bisque;
+    margin: 0 10% 0 10%;
+    background-color: #efe4d5;
+}
+
+.catalogo{
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    margin: 0 10% 3% 10%;
+    background-color: #efe4d5;
+}
+
+#titulo, #isbn, #stock{
+    font-size: 1.3rem;
+    width: 33.333%;
+    text-align: center;
 }
 #agregar{
     display: flex;
     flex-direction: row;
 }
-#input1, #input2, #input3{
+#input1, #input2, #input3, #buscar, #nuevoStock{
     height: 20px;
     margin: 13.5px 10px;
     width: 200px;
+    align-self: center;
 }
 
-#boton, #cargar{
+#boton, #cargar, #cambiar{
     height: 30px;
-    margin: 12px 10px;
+    margin: 10px;
+    align-self: center;
 }
 
 .flex{
     display: flex;
     flex-direction: row;
+}
+
+.texto{
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.textoOrden{
+    font-size: 1.2rem;
 }

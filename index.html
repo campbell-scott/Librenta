@@ -19,26 +19,44 @@
         <div id="isbn"></div>
         <div id="stock"></div>
     </div>
+    <div class="stockTotal">
+        <p>Cantidad total de stock:</p>
+        <p id="totalStock"></p>
+    </div>
     <div class="flex">
         <p class="texto">Cambiar stock de un titulo:</p>
-        <input type="text" id="buscar" placeholder="Ingrese Titulo">
-        <input type="text" id="nuevoStock" placeholder="Ingrese nuevo stock">
+        <input type="text" id="buscar" placeholder="Ingrese Titulo o ISBN">
+        <input type="number" id="nuevoStock" placeholder="Ingrese nuevo stock">
         <button id="cambiar">Cambiar</button>
     </div>
     <div id="agregar">
         <p class="texto">Agregar un libro al catalogo:</p>
         <input type="text" id="input1" placeholder="Ingrese Titulo">
         <input type="text" id="input2" placeholder="Ingrese ISBN">
-        <input type="text" id="input3" placeholder="Ingrese Stock">
+        <input type="number" id="input3" placeholder="Ingrese Stock">
         <button id="boton">Cargar</button>
     </div>
+    <!-- <table id="ventas">
+        <thead>
+          <tr>
+            <th>Título</th>
+            <th>Ene</th>
+            <th>Feb</th>
+            <th>Mar</th>
+            <th>Abr</th>
+            <th>May</th>
+            <th>Jun</th>
+            <th>Jul</th>
+          </tr>
+        </thead>
+      </table> -->
     <div class="flex">
         <p class="texto">Crear Orden de compra:</p>
         <button id="cargar">Crear</button> 
     </div>
     <div id="compra">
-
     </div>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./script.js"></script>
 </body>
 </html>

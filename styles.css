@@ -16,15 +16,26 @@ body{
     width: 80%;
     margin: 0 10% 0 10%;
     background-color: #efe4d5;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .catalogo{
     display: flex;
     flex-direction: row;
     width: 80%;
-    margin: 0 10% 3% 10%;
+    margin: 0 10% 0% 10%;
     background-color: #efe4d5;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
+
+/* #ventas{
+    font-size: 1.3rem;
+    width: 80%;
+    margin: 0 10% 0% 10%;
+    background-color: #efe4d5;
+} */
 
 #titulo, #isbn, #stock{
     font-size: 1.3rem;
@@ -40,6 +51,19 @@ body{
     margin: 13.5px 10px;
     width: 200px;
     align-self: center;
+}
+
+.stockTotal{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: #4d4d4d;
+    width: 30%;
+    margin: 0 35% 0% 35%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color: white;
 }
 
 #boton, #cargar, #cambiar{

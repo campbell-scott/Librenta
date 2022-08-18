@@ -14,10 +14,10 @@ localStorage.setItem("catalogo", catalogoJSON)
 let libros = JSON.parse(localStorage.getItem('catalogo'))
 
 //USANDO LOCAL STORAGE
-let nombreUsuario = prompt("Ingrese su nombre")
-localStorage.setItem("nombre", nombreUsuario)
-let usuario = localStorage.getItem("nombre")
-alert("Bienvenido "+usuario)
+// let nombreUsuario = prompt("Ingrese su nombre")
+// localStorage.setItem("nombre", nombreUsuario)
+// let usuario = localStorage.getItem("nombre")
+// alert("Bienvenido "+usuario)
 
 //IMPRIMIR CATALOGO
 let titulo = document.getElementById('titulo')
@@ -75,6 +75,13 @@ function cambiarStock() {
         busqueda.value = ''
         nuevoStock.value = ''
     }
+    Toastify({
+        text: "El stock se cambio correctamente",
+        className: "info",
+        style: {
+        background: "linear-gradient(to right, #4887be, #3284cb)",
+        }
+    }).showToast();
 }
 
 //AGREGAR UN LIBRO AL CATALOGO
@@ -83,7 +90,9 @@ let input2 = document.getElementById('input2')
 let input3 = document.getElementById('input3')
 let boton = document.getElementById('boton')
 boton.addEventListener('click', agregarLibro)
-
+let Titulo = " "
+let ISBN = " "
+let Stock = " "
 function agregarLibro() {
     let Titulo = input1.value
     let ISBN = parseInt(input2.value)
@@ -94,9 +103,17 @@ function agregarLibro() {
     input1.value = ''
     input2.value = ''
     input3.value = ''
+    Toastify({
+        text: "Se agrego el titulo correctamente",
+        className: "info",
+        style: {
+        background: "linear-gradient(to right, #4887be, #3284cb)",
+        }
+    }).showToast();
 }
 
 //CREAR ORDEN DE COMPRA
+
 let compra = document.getElementById('compra')
 let cargar = document.getElementById('cargar')
 cargar.addEventListener('click', dispararCompra)
@@ -104,7 +121,7 @@ cargar.addEventListener('click', dispararCompra)
 function dispararCompra() {
     compra.innerHTML = ''
     for (let i = 0; i < libros.length; i++) {
-        let ventas = parseInt(prompt("Ingrese las ventas de un mes de "+libros[i].Titulo))
+        let ventas = parseInt(prompt("Ingrese las ventas de un mes de "+libros[i].Titulo)) || 0
     if ((ventas*1.5)<=(libros[i].Stock)) {
         let compraPantalla = document.createElement('p')
         compraPantalla.className = "textoOrden"
@@ -118,6 +135,13 @@ function dispararCompra() {
         compra.append(compraPantalla)
     }
     }
+    Toastify({
+        text: "Orden de compra realizada",
+        className: "info",
+        style: {
+        background: "linear-gradient(to right, #4887be, #3284cb)",
+        }
+    }).showToast();
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////// VENTAS
@@ -147,4 +171,32 @@ function dispararCompra() {
 //     `
 //     tablaVentas.append(tbody)
     
+// }
+
+// let Titulo = input1.value
+// let ISBN = parseInt(input2.value)
+// let Stock = parseInt(input3.value)
+// libros.push({ISBN, Titulo, Stock})
+
+// let compra = document.getElementById('compra')
+// let cargar = document.getElementById('cargar')
+// cargar.addEventListener('click', dispararCompra)
+
+// function dispararCompra() {
+//     compra.innerHTML = ''
+//     for (let i = 0; i < libros.length; i++) {
+//         let ventas = parseInt(prompt("Ingrese las ventas de un mes de "+libros[i].Titulo))
+//     if ((ventas*1.5)<=(libros[i].Stock)) {
+//         let compraPantalla = document.createElement('p')
+//         compraPantalla.className = "textoOrden"
+//         compraPantalla.innerHTML = libros[i].Titulo +" (" + libros[i].ISBN + ") cantidad: 0"
+//         compra.append(compraPantalla)
+//     }
+//     else {
+//         let compraPantalla = document.createElement('p')
+//         compraPantalla.className = "textoOrden"
+//         compraPantalla.innerHTML = libros[i].Titulo +" (" + libros[i].ISBN + ") cantidad: " + Math.ceil(((ventas*1.5)-libros[i].Stock))
+//         compra.append(compraPantalla)
+//     }
+//     }
 // }

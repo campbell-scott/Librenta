@@ -37,7 +37,7 @@ body{
     background-color: #efe4d5;
 } */
 
-#titulo, #isbn, #stock{
+#titulo, #isbn, #stock {
     font-size: 1.3rem;
     width: 33.333%;
     text-align: center;
@@ -51,6 +51,10 @@ body{
     margin: 13.5px 10px;
     width: 200px;
     align-self: center;
+    background: rgb(209, 209, 209);
+    border: 1px solid #393939;
+    border-radius: 5px 5px 5px 5px;
+    padding: 5px;
 }
 
 .stockTotal{
@@ -70,8 +74,16 @@ body{
     height: 30px;
     margin: 10px;
     align-self: center;
+    background: rgb(41, 41, 41);
+    border: 1px solid #393939;
+    border-radius: 5px 5px 5px 5px;
+    color: #ffffff;
+    font-size: 1rem;
+    padding: 5px;
 }
-
+#boton:hover, #cargar:hover, #cambiar:hover {
+    background: rgb(105, 105, 105);
+}
 .flex{
     display: flex;
     flex-direction: row;

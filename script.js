@@ -37,17 +37,19 @@ fetch('./catalogo.json')
     //IMPRIMIR CATALOGO GRANDE
     let  catalogoGrande = document.getElementById('catalogoGrande')
 
-    for (let i = 0; i < libros.length; i++) {
-        let tbody = document.createElement('tbody')
-        
-        tbody.innerHTML = `
-        <td class="librosTitulo">${libros[i].Titulo}</td>
-        <td>${libros[i].ISBN}</td>
-        <td>${libros[i].Proveedor}</td>
-        <td>${libros[i].Stock}</td>
-        <td><img class="imgCatalogo" src="./imagenes/libro${[i]}.png"></td>
-        `
-        catalogoGrande.append(tbody)   
+    function actualizarCatalogoGrande() {
+        for (let i = 0; i < libros.length; i++) {
+            let tbody = document.createElement('tbody')
+            
+            tbody.innerHTML = `
+            <td class="librosTitulo">${libros[i].Titulo}</td>
+            <td>${libros[i].ISBN}</td>
+            <td>${libros[i].Proveedor}</td>
+            <td>${libros[i].Stock}</td>
+            <td><img class="imgCatalogo" src="./imagenes/libro${[i]}.png"></td>
+            `
+            catalogoGrande.append(tbody)   
+        }
     }
     //IMPRIMIR CATALOGO CHICO
     let titulo = document.getElementById('titulo')
@@ -69,6 +71,7 @@ fetch('./catalogo.json')
             cantidadPantalla.innerHTML = libros[i].Stock
             stock.append(cantidadPantalla)
         }
+        actualizarCatalogoGrande()
     }
     actualizarCatalogo()
 
@@ -82,6 +85,34 @@ fetch('./catalogo.json')
     }
     sumarStock()
 
+    //AGREGAR UN LIBRO AL CATALOGO
+    let input1 = document.getElementById('input1')
+    let input2 = document.getElementById('input2')
+    let input3 = document.getElementById('input3')
+    let boton = document.getElementById('boton')
+    boton.addEventListener('click', agregarLibro)
+    let Titulo = " "
+    let ISBN = " "
+    let Stock = " "
+    function agregarLibro() {
+        let Titulo = input1.value
+        let ISBN = parseInt(input2.value)
+        let Stock = parseInt(input3.value)
+        libros.push({ISBN, Titulo, Stock})
+        actualizarCatalogo()
+        sumarStock()
+        input1.value = ''
+        input2.value = ''
+        input3.value = ''
+        Toastify({
+            text: "Se agrego el titulo correctamente",
+            className: "info",
+            style: {
+            background: "linear-gradient(to right, #4887be, #3284cb)",
+            }
+        }).showToast();
+    }
+    
     //CAMBIAR STOCK
     let busqueda = document.getElementById('buscar')
     let nuevoStock = document.getElementById('nuevoStock')
@@ -106,34 +137,6 @@ fetch('./catalogo.json')
         }
         Toastify({
             text: "El stock se cambio correctamente",
-            className: "info",
-            style: {
-            background: "linear-gradient(to right, #4887be, #3284cb)",
-            }
-        }).showToast();
-    }
-
-    //AGREGAR UN LIBRO AL CATALOGO
-    let input1 = document.getElementById('input1')
-    let input2 = document.getElementById('input2')
-    let input3 = document.getElementById('input3')
-    let boton = document.getElementById('boton')
-    boton.addEventListener('click', agregarLibro)
-    let Titulo = " "
-    let ISBN = " "
-    let Stock = " "
-    function agregarLibro() {
-        let Titulo = input1.value
-        let ISBN = parseInt(input2.value)
-        let Stock = parseInt(input3.value)
-        libros.push({ISBN, Titulo, Stock})
-        actualizarCatalogo()
-        sumarStock()
-        input1.value = ''
-        input2.value = ''
-        input3.value = ''
-        Toastify({
-            text: "Se agrego el titulo correctamente",
             className: "info",
             style: {
             background: "linear-gradient(to right, #4887be, #3284cb)",

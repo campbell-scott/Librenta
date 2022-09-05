@@ -56,6 +56,7 @@ body{
 }
 #catalogoGrande td{
     border: black 2px solid;
+    height: 100px;
 }
 #catalogoGrande th{
     border: black 2px solid;
@@ -65,7 +66,7 @@ body{
 }
 .imgCatalogo{
     height: 80px;
-    padding: 10px;
+    padding: px;
 }
 .catalogoTitulo{
     font-family: 'IBM Plex Sans', sans-serif;
@@ -79,10 +80,12 @@ body{
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
+.catalogoTitulo p{
+    margin: 15px 0 0 0;
+}
 .catalogo{
     display: flex;
     flex-direction: row;
-    margin: 10px;
     width: 80%;
     margin: 0 10% 0% 10%;
     background-color: #efe4d5;
@@ -90,7 +93,9 @@ body{
     border-bottom-right-radius: 10px;
 }
 .catalogo p{
-    margin: 10px;
+    margin: 20px 0 20px 0;
+    font-size: 1.3rem;
+    font-family: 'IBM Plex Sans', sans-serif;
 }
 #titulo, #isbn, #stock{
     font-family: 'IBM Plex Sans', sans-serif;
@@ -109,6 +114,7 @@ body{
 .agregar{
     display: flex;
     flex-direction: row;
+    margin: 2% 0 2% 0;
 }
 #input1, #input2, #input3, #buscar, #nuevoStock{
     height: 20px;
@@ -124,7 +130,7 @@ body{
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     background-color: #4d4d4d;
     width: 30%;
     margin: 0 35% 0% 35%;
@@ -132,17 +138,20 @@ body{
     border-bottom-right-radius: 10px;
     color: white;
     height: 30px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 1.2rem;
+
 }
 #boton, #cargar, #cambiar{
-    height: 30px;
+    height: 35px;
     margin: 10px;
     align-self: center;
     background: rgb(41, 41, 41);
     border: 1px solid #393939;
     border-radius: 5px 5px 5px 5px;
     color: #ffffff;
-    font-size: 1rem;
-    padding: 5px;
+    font-size: 1.5rem;
+    padding: 3px;
     font-family: 'Roboto', sans-serif;
 }
 #boton:hover, #cargar:hover, #cambiar:hover {
@@ -151,13 +160,23 @@ body{
 .flex{
     display: flex;
     flex-direction: row;
+    margin: 2% 0 2% 0;
 }
 .texto{
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     font-weight: 500;
     margin-left: 25px;
     align-self: center;
+    width: 22%;
+    font-family: 'Roboto', sans-serif;
+
 }
 .textoOrden{
     font-size: 1.2rem;
+}
+#compra p{
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 15px;
 }

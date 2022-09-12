@@ -10,9 +10,71 @@
 // localStorage.setItem("nombre", nombreUsuario)
 // let usuario = localStorage.getItem("nombre")
 // alert("Bienvenido "+usuario)
+//INGRESO
+let id = Math.ceil(100000000 + Math.random() * 900000000);
+let nombre = document.getElementById('nombre')
+let apellido = document.getElementById('apellido')
+let email = document.getElementById('email')
+let contra = document.getElementById('contra')
+let confirContra = document.getElementById('confirContra')
+let registro = document.getElementById('registro')
+let ingreso = document.getElementById('ingreso')
+let header = document.getElementById('header')
+let catalogo = document.getElementById('catalogo')
+let usuarioLog = JSON.parse(localStorage.getItem('usuario'))
+
+
+if (usuarioLog != null) {
+    ingreso.style.display = "none";
+    header.style.display = "flex";
+    catalogo.style.display = "block"
+}
+
+
+registro.addEventListener('click', registrarUsuario)
+
+function registrarUsuario() {
+    console.log(nombre.value)
+    console.log(apellido.value)
+    console.log(email.value)
+    if (nombre.value === "", apellido.value === "", email.value === "") {
+        Toastify({
+            text: "Complete todos los campos",
+            className: "info",
+            style: {
+            background: "linear-gradient(to right, #4887be, #3284cb)",
+            }
+        }).showToast();
+    } else {
+        if (contra === "" && confirContra === "") {
+        Toastify({
+            text: "Ingrese contraseña",
+            className: "info",
+            style: {
+            background: "linear-gradient(to right, #4887be, #3284cb)",
+            }
+        }).showToast(); 
+        } else if (contra.value === confirContra.value) {
+            ingreso.style.display = "none";
+            header.style.display = "flex";
+            catalogo.style.display = "block";
+            let usuario = JSON.stringify({id: id, nombre: nombre.value, apellido: apellido.value, email: email.value})
+            localStorage.setItem("usuario", usuario)
+        } else {
+            Toastify({
+                text: "Confirmacion de contraseña incorrecta",
+                className: "info",
+                style: {
+                background: "linear-gradient(to right, #4887be, #3284cb)",
+                }
+            }).showToast();
+        }
+    }
+}   
+
 let catalogoBoton = document.getElementById('catalogoBoton')
 let administrarBoton = document.getElementById('administrarBoton')
-let catalogo = document.getElementById('catalogo')
+
 let administrar = document.getElementById('administrar')
 
 catalogoBoton.addEventListener('click', mostrarCata)
@@ -55,11 +117,13 @@ fetch('./catalogo.json')
     let titulo = document.getElementById('titulo')
     let isbn = document.getElementById('isbn')
     let stock = document.getElementById('stock')
+    let ventas = document.getElementById('ventas')
 
     function actualizarCatalogo() {
         titulo.innerHTML = ''
         isbn.innerHTML = ''
         stock.innerHTML = ''
+        ventas.innerHTML = ''
         for (let i = 0; i < libros.length; i++) {
             let nombrePantalla = document.createElement('p')
             nombrePantalla.innerHTML = libros[i].Titulo
@@ -70,6 +134,11 @@ fetch('./catalogo.json')
             let cantidadPantalla = document.createElement('p')
             cantidadPantalla.innerHTML = libros[i].Stock
             stock.append(cantidadPantalla)
+            let inputVentas = document.createElement('div')
+            inputVentas.innerHTML = `
+            <input type="number" id="ventaLibro${[i]}" placeholder="Ingrese ventas">
+            `
+            ventas.append(inputVentas)
         }
         actualizarCatalogoGrande()
     }
@@ -95,22 +164,32 @@ fetch('./catalogo.json')
     let ISBN = " "
     let Stock = " "
     function agregarLibro() {
-        let Titulo = input1.value
-        let ISBN = parseInt(input2.value)
-        let Stock = parseInt(input3.value)
-        libros.push({ISBN, Titulo, Stock})
-        actualizarCatalogo()
-        sumarStock()
-        input1.value = ''
-        input2.value = ''
-        input3.value = ''
-        Toastify({
-            text: "Se agrego el titulo correctamente",
-            className: "info",
-            style: {
-            background: "linear-gradient(to right, #4887be, #3284cb)",
-            }
-        }).showToast();
+        if (input1.value === "", input2.value === "", input3.value === "") {
+            Toastify({
+                text: "Complete todos los campos",
+                className: "info",
+                style: {
+                background: "linear-gradient(to right, #4887be, #3284cb)",
+                }
+            }).showToast();
+        } else {
+            let Titulo = input1.value
+            let ISBN = parseInt(input2.value)
+            let Stock = parseInt(input3.value)
+            libros.push({ISBN, Titulo, Stock})
+            actualizarCatalogo()
+            sumarStock()
+            input1.value = ''
+            input2.value = ''
+            input3.value = ''
+            Toastify({
+                text: "Se agrego el titulo correctamente",
+                className: "info",
+                style: {
+                background: "linear-gradient(to right, #4887be, #3284cb)",
+                }
+            }).showToast();
+        }
     }
     
     //CAMBIAR STOCK
@@ -153,8 +232,18 @@ fetch('./catalogo.json')
     function dispararCompra() {
         compra.innerHTML = ''
         for (let i = 0; i < libros.length; i++) {
-            let ventas = parseInt(prompt("Ingrese las ventas de un mes de "+libros[i].Titulo)) || 0
-        if ((ventas*1.5)<=(libros[i].Stock)) {
+            let venta = document.getElementById('ventaLibro'+[i])
+        if (venta.value === "" ) {
+            Toastify({
+                text: "Complete todos los campos de ventas",
+                className: "info",
+                style: {
+                background: "linear-gradient(to right, #4887be, #3284cb)",
+                }
+            }).showToast();
+            break
+        }
+        else if ((venta.value*1.5)<=(libros[i].Stock)) {
             let compraPantalla = document.createElement('p')
             compraPantalla.className = "textoOrden"
             compraPantalla.innerHTML = libros[i].Titulo +" (" + libros[i].ISBN + ") cantidad: 0"
@@ -163,7 +252,7 @@ fetch('./catalogo.json')
         else {
             let compraPantalla = document.createElement('p')
             compraPantalla.className = "textoOrden"
-            compraPantalla.innerHTML = libros[i].Titulo +" (" + libros[i].ISBN + ") cantidad: " + Math.ceil(((ventas*1.5)-libros[i].Stock))
+            compraPantalla.innerHTML = libros[i].Titulo +" (" + libros[i].ISBN + ") cantidad: " + Math.ceil(((venta.value*1.5)-libros[i].Stock))
             compra.append(compraPantalla)
         }
         }

@@ -1,15 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////////////////// INDEX
 
-//USANDO JSON CON LS
-// let catalogoJSON = JSON.stringify(catalogo)
-// localStorage.setItem("catalogo", catalogoJSON)
-// let libros = JSON.parse(localStorage.getItem('catalogo'))
-
-//USANDO LOCAL STORAGE
-// let nombreUsuario = prompt("Ingrese su nombre")
-// localStorage.setItem("nombre", nombreUsuario)
-// let usuario = localStorage.getItem("nombre")
-// alert("Bienvenido "+usuario)
 //INGRESO
 let id = Math.ceil(100000000 + Math.random() * 900000000);
 let nombre = document.getElementById('nombre')
@@ -22,7 +12,9 @@ let ingreso = document.getElementById('ingreso')
 let header = document.getElementById('header')
 let catalogo = document.getElementById('catalogo')
 let usuarioLog = JSON.parse(localStorage.getItem('usuario'))
-
+let falso = document.getElementById('falsoIngreso')
+let falsoEmail = document.getElementById('falsoEmail')
+let falsoContra = document.getElementById('falsoContra')
 
 if (usuarioLog != null) {
     ingreso.style.display = "none";
@@ -30,14 +22,34 @@ if (usuarioLog != null) {
     catalogo.style.display = "block"
 }
 
-
 registro.addEventListener('click', registrarUsuario)
+falso.addEventListener('click', falsoIngreso)
 
+function falsoIngreso() {
+    console.log("hola")
+    if (falsoEmail.value === "" || falsoContra.value === "") {
+        Toastify({
+            text: "Ingrese usuario",
+            className: "info",
+            style: {
+            background: "linear-gradient(to right, #4887be, #3284cb)",
+            }
+        }).showToast();
+    } else {
+        Toastify({
+            text: "No encontramos ningun usuario registrado con esos datos",
+            className: "info",
+            style: {
+            background: "linear-gradient(to right, #4887be, #3284cb)",
+            }
+        }).showToast();
+    }
+}
 function registrarUsuario() {
     console.log(nombre.value)
     console.log(apellido.value)
     console.log(email.value)
-    if (nombre.value === "", apellido.value === "", email.value === "") {
+    if (nombre.value === "" || apellido.value === "" || email.value === "") {
         Toastify({
             text: "Complete todos los campos",
             className: "info",
@@ -46,7 +58,7 @@ function registrarUsuario() {
             }
         }).showToast();
     } else {
-        if (contra === "" && confirContra === "") {
+        if (contra.value === "" || confirContra.value === "") {
         Toastify({
             text: "Ingrese contraseña",
             className: "info",
@@ -100,9 +112,18 @@ fetch('./catalogo.json')
     let  catalogoGrande = document.getElementById('catalogoGrande')
 
     function actualizarCatalogoGrande() {
+        catalogoGrande.innerHTML = ''
+        let tr = document.createElement('tr')
+        tr.innerHTML = `
+        <th>Título</th>
+        <th>ISBN</th>
+        <th>Proveedor</th>
+        <th>Stock</th>
+        <th>Portada</th>
+        `
+        catalogoGrande.append(tr)
         for (let i = 0; i < libros.length; i++) {
             let tbody = document.createElement('tbody')
-            
             tbody.innerHTML = `
             <td class="librosTitulo">${libros[i].Titulo}</td>
             <td>${libros[i].ISBN}</td>
@@ -164,7 +185,7 @@ fetch('./catalogo.json')
     let ISBN = " "
     let Stock = " "
     function agregarLibro() {
-        if (input1.value === "", input2.value === "", input3.value === "") {
+        if (input1.value === "" || input2.value === "" || input3.value === "") {
             Toastify({
                 text: "Complete todos los campos",
                 className: "info",
@@ -256,12 +277,5 @@ fetch('./catalogo.json')
             compra.append(compraPantalla)
         }
         }
-        Toastify({
-            text: "Orden de compra realizada",
-            className: "info",
-            style: {
-            background: "linear-gradient(to right, #4887be, #3284cb)",
-            }
-        }).showToast();
     }
 })

@@ -18,9 +18,9 @@
     <div id="ingreso" class="ingreso">
         <p>Acceder</p>
         <img src="./imagenes/librenta.png" alt="">
-        <input class="ingresoCuenta" type="email" placeholder="E-mail">
-        <input class="ingresoCuenta" type="password" placeholder="Contraseña">
-        <button class="btn">Ingresar</button>
+        <input id="falsoEmail" class="ingresoCuenta" type="email" placeholder="E-mail">
+        <input id="falsoContra" class="ingresoCuenta" type="password" placeholder="Contraseña">
+        <button id="falsoIngreso" class="btn">Ingresar</button>
         <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Crear cuenta
         </button>
@@ -51,15 +51,6 @@
     </div>
     <div id="catalogo" style="display: none;">
         <table id="catalogoGrande">
-            <thead>
-            <tr>
-                <th>Título</th>
-                <th>ISBN</th>
-                <th>Proveedor</th>
-                <th>Stock</th>
-                <th>Portada</th>
-            </tr>
-            </thead>
         </table>
     </div>
     <div id="administrar" style="display: none;">

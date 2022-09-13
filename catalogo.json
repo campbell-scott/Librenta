@@ -3,5 +3,8 @@
     {"ISBN": 9789878000473, "Titulo": "Saga Completa Harry Potter", "Proveedor": "Random", "Stock": 106},
     {"ISBN": 9789508523150, "Titulo": "Cómo Hacer Que Te Pasen Cosas Buenas", "Proveedor": "Planeta", "Stock": 74},
     {"ISBN": 9789502812441, "Titulo": "El Club De Las 5 De La Mañana", "Proveedor": "Random", "Stock": 188},
-    {"ISBN": 9789874433428, "Titulo": "De Comerciante a Empresario", "Proveedor": "G.Gonzalez", "Stock": 22}
+    {"ISBN": 9789874433428, "Titulo": "De Comerciante a Empresario", "Proveedor": "G.Gonzalez", "Stock": 22},
+    {"ISBN": 9789501298321, "Titulo": "Hábitos Atómicos", "Proveedor": "Planeta", "Stock": 150},
+    {"ISBN": 9789877250992, "Titulo": "El Poder Del Ahora", "Proveedor": "Random", "Stock": 80},
+    {"ISBN": 9788425432026, "Titulo": "El Hombre En Busca Del Sentido", "Proveedor": "Manantial", "Stock": 30}
 ]
